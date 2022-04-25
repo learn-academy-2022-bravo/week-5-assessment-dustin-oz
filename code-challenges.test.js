@@ -15,16 +15,16 @@
 
 // a) Create a test with expect statements using the variables provided.
 
-describe("codedMessage", () => {
-    it("returns eat food or keep working based on input", () => {
-        const secretCodeWord1 = "Lackadaisical"
-        const secretCodeWord2 = "Gobbledygook"
-        const secretCodeWord3 = "Eccentric"
-        expect(codedMessage(secretCodeWord1)).toEqual("L4ck4d41s1c4l")
-        expect(codedMessage(secretCodeWord2)).toEqual("G0bbl3dyg00k")
-        expect(codedMessage(secretCodeWord3)).toEqual("3cc3ntr1c")
-    })
-})
+// describe("codedMessage", () => {
+//     it("takes in a string and returns a coded message. The coded message converts 'a' to 4, 'e' to 3, 'i' to 1, and 'o' to 0", () => {
+//         const secretCodeWord1 = "Lackadaisical"
+//         const secretCodeWord2 = "Gobbledygook"
+//         const secretCodeWord3 = "Eccentric"
+//         expect(codedMessage(secretCodeWord1)).toEqual("L4ck4d41s1c4l")
+//         expect(codedMessage(secretCodeWord2)).toEqual("G0bbl3dyg00k")
+//         expect(codedMessage(secretCodeWord3)).toEqual("3cc3ntr1c")
+//     })
+// })
 
 // Expected output: "L4ck4d41s1c4l"
 // Expected output: "G0bbl3dyg00k"
@@ -63,15 +63,45 @@ const codedMessage = (string) => {
 
 // a) Create a test with expects statement using the variable provided.
 
-const arrayOfWords1 = ["Apple", "Banana", "Plum", "Orange", "Kiwi"]
-const letterA = "a"
+
+describe("wordOutput", () => {
+    it("takes in an array of words and a single letter and returns all the words that contain that particular letter", () => {
+        const arrayOfWords1 = ["Apple", "Banana", "Plum", "Orange", "Kiwi"]
+        const letterA = "a"
+        const arrayOfWords2 = ["Mango", "Cherry", "Apricot", "Blueberry", "Peach"]
+        const letterE = "e"
+        expect(wordOutput(arrayOfWords1, letterA)).toEqual(["Apple", "Banana", "Orange"])
+        expect(wordOutput(arrayOfWords2, letterE)).toEqual(["Cherry", "Blueberry", "Peach"])
+    })
+})
+
 // Expected output: ["Apple", "Banana", "Orange"]
-const arrayOfWords2 = ["Mango", "Cherry", "Apricot", "Blueberry", "Peach"]
-const letterE = "e"
 // Expected output: ["Cherry", "Blueberry", "Peach"]
+
+        // JEST GOOD FAILURE: --> ReferenceError: wordOutput is not defined
+
 
 
 // b) Create the function that makes the test pass.
+
+// PSEUDO CODE:
+// Create a function "wordOutput" that takes in (array, letter)
+// return the supplied "array" and ".filter" on each "value" in the the array
+// return "value" in the array if it ".includes" (letter) ||or if  "value" ".includes" (letter.toUppercase)
+
+const wordOutput = (array, letter) => {
+    return array.filter(value => {
+        return value.includes(letter) || value.includes(letter.toUpperCase())
+    })
+}
+
+        // JEST TEST PASS
+        // PASS./ code - challenges.test.js
+        // wordOutput
+        //     ✓ takes in an array of words and a single letter and returns all the words that contain that particular letter(1 ms)
+
+
+
 
 
 // --------------------3) Create a function that takes in an array of 5 numbers and determines whether or not the array is a “full house”. A full house is exactly one pair and one three of a kind.
