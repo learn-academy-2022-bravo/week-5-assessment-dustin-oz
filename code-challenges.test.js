@@ -15,15 +15,48 @@
 
 // a) Create a test with expect statements using the variables provided.
 
-const secretCodeWord1 = "Lackadaisical"
+describe("codedMessage", () => {
+    it("returns eat food or keep working based on input", () => {
+        const secretCodeWord1 = "Lackadaisical"
+        const secretCodeWord2 = "Gobbledygook"
+        const secretCodeWord3 = "Eccentric"
+        expect(codedMessage(secretCodeWord1)).toEqual("L4ck4d41s1c4l")
+        expect(codedMessage(secretCodeWord2)).toEqual("G0bbl3dyg00k")
+        expect(codedMessage(secretCodeWord3)).toEqual("3cc3ntr1c")
+    })
+})
+
 // Expected output: "L4ck4d41s1c4l"
-const secretCodeWord2 = "Gobbledygook"
 // Expected output: "G0bbl3dyg00k"
-const secretCodeWord3 = "Eccentric"
 // Expected output: "3cc3ntr1c"
+        
+        // JEST GOOD FAILURE OUTPUT: -->  ReferenceError: codedMessage is not defined
+
 
 
 // b) Create the function that makes the test pass.
+
+
+// STUDENT NOTE: I think I have been given two types of guidance in past assessment instructor notes on my pseudo code . I have been  told good job since it was quite clear what I was intendeding (much as it is written below this note) and I have been told by another instructors notes on my assessment something like, dont make my pseudo code so text or word dependent? I took that to mean i need to make my pseudo code shorter? But I think I will continue to pseudo code perhaps in a slighly more wordy/lengthly fashion, of course on a case  by case basis.. in this first challenge question, I felt it needed more words to make sure I can remember what I am doing later in the coding since I had never used .replace()..
+
+// PSEUDO CODE:
+// Create function called codedMessage that takes in (string)
+// use ".replace" along with the "g" global identifier for each vowel in the alphabet excluding "u" on STRING
+// use the "i" identifier in ^^ .replace to be "case insensitive" --> /a/gi 
+// Since .replace takes 2 values, the target word and new value, supply each .replace with the "#" specified
+// return the entire statement
+
+const codedMessage = (string) => {
+    return string.replace(/a/gi, 4).replace(/e/gi, 3).replace(/i/gi, 1).replace(/o/gi, 0)
+}
+
+        // JEST PASS
+        // PASS./ code - challenges.test.js
+        // codedMessage
+        //     ✓ returns eat food or keep working based on input(1 ms)
+
+
+
 
 
 // --------------------2) Create a function that takes in an array of words and a single letter and returns all the words that contain that particular letter.
