@@ -4,11 +4,22 @@
 # --------------------1) Create a method that takes in an array of words and a single letter and returns all the words that contain that particular letter.
 
 beverages_array = ['coffee', 'tea', 'juice', 'water', 'soda water']
-
 letter_o = 'o'
 # Expected output: ['coffee', 'soda water']
 letter_t = 't'
 # Expected output: ['tea', 'water', 'soda water']
+
+# PSEUDO CODE:
+# Create medhod called wordReturn --> (array, letter)
+# Use .select on the array to filter through the elements in the array
+# return(implicitly) if value includes the supplied letter using .include? and passing in letter
+
+def wordReturn (array, letter)
+    array.select{|value| value.include?(letter)}
+end
+
+p wordReturn beverages_array, letter_o
+p wordReturn beverages_array, letter_t
 
 
 # -------------------2) Create a method that takes in an array of numbers and returns the sum of the numbers. Use the test variables provided.
