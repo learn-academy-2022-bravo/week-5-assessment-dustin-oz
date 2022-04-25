@@ -15,16 +15,16 @@
 
 // a) Create a test with expect statements using the variables provided.
 
-// describe("codedMessage", () => {
-//     it("takes in a string and returns a coded message. The coded message converts 'a' to 4, 'e' to 3, 'i' to 1, and 'o' to 0", () => {
-//         const secretCodeWord1 = "Lackadaisical"
-//         const secretCodeWord2 = "Gobbledygook"
-//         const secretCodeWord3 = "Eccentric"
-//         expect(codedMessage(secretCodeWord1)).toEqual("L4ck4d41s1c4l")
-//         expect(codedMessage(secretCodeWord2)).toEqual("G0bbl3dyg00k")
-//         expect(codedMessage(secretCodeWord3)).toEqual("3cc3ntr1c")
-//     })
-// })
+describe("codedMessage", () => {
+    it("takes in a string and returns a coded message. The coded message converts 'a' to 4, 'e' to 3, 'i' to 1, and 'o' to 0", () => {
+        const secretCodeWord1 = "Lackadaisical"
+        const secretCodeWord2 = "Gobbledygook"
+        const secretCodeWord3 = "Eccentric"
+        expect(codedMessage(secretCodeWord1)).toEqual("L4ck4d41s1c4l")
+        expect(codedMessage(secretCodeWord2)).toEqual("G0bbl3dyg00k")
+        expect(codedMessage(secretCodeWord3)).toEqual("3cc3ntr1c")
+    })
+})
 
 // Expected output: "L4ck4d41s1c4l"
 // Expected output: "G0bbl3dyg00k"
@@ -108,12 +108,50 @@ const wordOutput = (array, letter) => {
 
 // a) Create a test with expect statements using the variable provided.
 
-const hand1 = [5, 5, 5, 3, 3]
+describe("fullHouseFinder", () => {
+    it("takes in an array of 5 numbers and determines whether or not the array is a “full house”. A full house is exactly one pair and one three of a kind", () => {
+        const hand1 = [5, 5, 5, 3, 3]
+        const hand2 = [5, 5, 3, 3, 4]
+        const hand3 = [5, 5, 5, 5, 4]
+        expect(fullHouseFinder(hand1)).toEqual(true)
+        expect(fullHouseFinder(hand2)).toEqual(false)
+        expect(fullHouseFinder(hand3)).toEqual(false)
+    })
+})
+
 // Expected output: true
-const hand2 = [5, 5, 3, 3, 4]
 // Expected output: false
-const hand3 = [5, 5, 5, 5, 4]
 // Expected output: false
+
+        // JEST GOOD FAILURE: --> ReferenceError: fullHouseFinder is not defined
 
 
 // b) Create the function that makes the test pass.
+
+// PSEUDO CODE:
+// Create function "fullHouseFinder" that takes in (array)
+// Create "dealer" variable to hold a new array that ".filter's" looking for dupilicates (value, index)
+// the ".sort" method will sort the duplicate numbers in "dealer"
+// using if statement and conditionals, check dealer.length < 3 and return false 
+// elseif's can handle the other ways to win/not win
+
+
+const fullHouseFinder = (array) => {
+    let dealer = array.filter((value, index) =>
+        index !== array.indexOf(value)).sort()
+
+    if (dealer.length < 3) {
+        return false
+    } else if (dealer[0] === dealer[1] && dealer[1] !== dealer[2]) {
+        return true
+    } else if (dealer[0] !== dealer[1] && dealer[1] === dealer[2]) {
+        return true
+    } else {
+        return false
+    }
+}
+
+        // JEST TEST PASS
+        // PASS./ code - challenges.test.js
+        // fullHouseFinder
+        //     ✓ takes in an array of 5 numbers and determines whether or not the array is a “full house”. A full house is exactly one pair and one three of a kind(1 ms)
